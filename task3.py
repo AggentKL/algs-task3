@@ -1,13 +1,20 @@
+import time
+import sys as sus
+
+def time_convert(sec):
+    mins = sec // 60
+    sec = sec % 60
+    hours = mins // 60
+    mins = mins % 60
+    print("Time Lapsed = {0}:{1}:{2}".format(int(hours),int(mins),sec))
+
 splitArr = []
 triangleArr = []
 rectArr = []
 
 def splitted_add():
     splitArr.append([])
-    print()
-    print()
-    
-    print("Enter count of stages")
+    print("\n\nEnter count of stages")
     stages = int(input())
 
     for i in range(0, stages):
@@ -15,24 +22,26 @@ def splitted_add():
         splitArr[len(splitArr) - 1].append(input())
     
     print(" --> ".join(splitArr[len(splitArr) - 1]))
+    print(f"Memory occupied: {sus.getsizeof(splitArr)} bytes")
 
 def splitted_search():
-    print()
-    print()
-    print("Enter searched stage: ")
+    print("\n\nEnter searched stage: ")
     
     try:
+        start_time = time.time()
         finded = splitArr[int(input()) - 1]
-
+        end_time = time.time()
+        time_lapsed = end_time - start_time
+        print("Finded stage:")
         print(" --> ".join(finded))
+        time_convert(time_lapsed)
+
     except:
-        print("Sorry, no index")
+        print("Sorry, invalide index")
 
 def splitted_show():
-    print()
-    print()
     for i in range(0, len(splitArr)):
-        print("Index " + str(i+1) + ":")
+        print("\n\nIndex " + str(i+1) + ":")
         print(" --> ".join(splitArr[i]))
 
 def new_splitted_arr():
@@ -40,9 +49,7 @@ def new_splitted_arr():
 
 
     while (True):
-        print()
-        print()
-        print("1 - Add")
+        print("\n\n1 - Add")
         print("2 - Search")
         print("3 - Show")
         print("0 - Exit")
@@ -61,10 +68,7 @@ def new_splitted_arr():
                 break        
 
 def triangle_add():
-    print()
-    print()
-    
-    print("Enter count of stages")
+    print("\n\nEnter count of stages")
     stages = int(input())
 
     for i in range(0, stages):
@@ -75,21 +79,34 @@ def triangle_add():
             triangleArr.append([*triangleArr[len(triangleArr) - 2], input()])
 
     print(" --> ".join(triangleArr[len(triangleArr) - 1]))
+    print(f"Memory occupied: {sus.getsizeof(triangleArr)} bytes")
+
+def triangle_search():
+    print("\n\nEnter searched stage: ")
+    
+    try:
+        start_time = time.time()
+        finded = triangleArr[int(input()) - 1]
+        end_time = time.time()
+        time_lapsed = end_time - start_time
+        print("Finded stage:")
+        print(" --> ".join(finded))
+        time_convert(time_lapsed)
+
+    except:
+        print("Sorry, invalide index")
 
 def triangle_show():
-    print()
-    print()
-    print(" --> ".join(triangleArr))
+    print("\n\n --> ".join(triangleArr))
 
 
 def new_triangle_arr():
     triangleArr = []
 
     while (True):
-        print()
-        print()
-        print("1 - Add")
-        print("2 - Show")
+        print("\n\n1 - Add")
+        print("2 - Search")
+        print("3 - Show")
         print("0 - Exit")
 
         match (int(input())):
@@ -97,6 +114,9 @@ def new_triangle_arr():
                 triangle_add()
                 break
             case 2:
+                triangle_search()
+                break
+            case 3:
                 triangle_show()
                 break
             case other:
@@ -104,10 +124,7 @@ def new_triangle_arr():
 
 def rect_add():
     tempvar = []
-    print()
-    print()
-
-    print("Enter count of stages")
+    print("\n\nEnter count of stages")
     stages = int(input())
 
     for i in range(0, stages):
@@ -117,18 +134,21 @@ def rect_add():
     rectArr.append(tempvar)
 
     print(" --> ".join(rectArr[len(rectArr) - 1]))
+    print(f"Memory occupied: {sus.getsizeof(rectArr)} bytes")
 
 def rect_search():
-    print()
-    print()
-    print("Enter searched stage: ")
+    print("\n\nEnter searched stage: ")
     
     try:
+        start_time = time.time()
         finded = rectArr[int(input()) - 1]
-
+        end_time = time.time()
+        time_lapsed = end_time - start_time
+        print("Finded stage:")
         print(" --> ".join(finded))
+        time_convert(time_lapsed)
     except:
-        print("Sorry, no index")
+        print("Sorry, invalide index")
 
 def rect_show():
     print()
@@ -142,9 +162,7 @@ def new_rect_arr():
     rectArr = []
 
     while (True):
-        print()
-        print()
-        print("1 - Add")
+        print("\n\n1 - Add")
         print("2 - Search")
         print("3 - Show")
         print("0 - Exit")
@@ -162,9 +180,7 @@ def new_rect_arr():
                 break
 
 while (True):
-    print()
-    print()
-    print("Pick one")
+    print("\n\nPick one")
     print("1 - Split array")
     print("2 - Triangle array")
     print("3 - Rect array")
